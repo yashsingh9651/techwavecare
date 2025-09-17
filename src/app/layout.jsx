@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${poppins.className} ${jetbrainsMono.variable} font-sans antialiased`}
+        className={`${inter.variable} ${poppins.className} ${jetbrainsMono.variable} w-screen  font-sans antialiased`}
       >
         <Navbar />
         {children}

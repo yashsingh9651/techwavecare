@@ -1,10 +1,33 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 const Experience = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const experienceRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (experienceRef.current) {
+      observer.observe(experienceRef.current);
+    }
+
+    return () => {
+      if (experienceRef.current) {
+        observer.unobserve(experienceRef.current);
+      }
+    };
+  }, []);
 
   const testimonials = [
     {
@@ -45,26 +68,34 @@ const Experience = () => {
     return () => clearInterval(interval);
   }, [testimonials.length]);
   return (
-    <section className="relative w-full overflow-hidden bg-neutral-950">
+    <section ref={experienceRef} className="relative w-full overflow-hidden bg-neutral-950">
       <div className="relative z-20 text-white">
         <div className="container mx-auto px-4 md:px-10 py-10 md:py-20 grid md:grid-cols-2 gap-10 items-center">
           {/* Hero Text and Image */}
-          <div className="space-y-6">
-            <div>
+          <div className={`space-y-6 transition-all duration-1000 transform ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+          }`}>
+            <div className={`transition-all duration-1000 delay-200 transform ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}>
               <h3 className="text-lg text-blue-400 mb-2 font-medium">Our Experience</h3>
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
                 For over <span className="text-blue-400">15 Years</span>, We've provided vital IT Support For Clients
               </h2>
             </div>
             
-            <p className="text-lg text-gray-300 leading-relaxed">
+            <p className={`text-lg text-gray-300 leading-relaxed transition-all duration-1000 delay-400 transform ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}>
               At TechWaveCare, we are committed to delivering top-tier IT
               services tailored to your business needs. Our expertise spans IT
               management, infrastructure, optimization, and security, ensuring
               seamless operations and robust digital protection.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className={`flex flex-col sm:flex-row gap-4 pt-4 transition-all duration-1000 delay-600 transform ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+            }`}>
               <Link href="/contact" >
                 <button className="px-8 py-3 cursor-pointer bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300">
                   Contact Us
@@ -79,7 +110,9 @@ const Experience = () => {
           </div>
           
           {/* Hero Image */}
-          <div className="relative">
+          <div className={`relative transition-all duration-1000 delay-800 transform ${
+            isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'
+          }`}>
             <Image src="/testimonial.jpg" className='object-cover w-full h-full rounded-lg' alt="Team Image" width={500} height={500} />
             {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full opacity-60 animate-pulse"></div>
@@ -89,12 +122,16 @@ const Experience = () => {
 
         {/* Testimonial Block */}
         <div className="container mx-auto px-4 md:px-10 py-10 md:py-20">
-          <div className="text-center mb-12">
+          <div className={`text-center mb-12 transition-all duration-1000 delay-1000 transform ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}>
             <h3 className="text-lg text-blue-400 mb-2 font-medium">What Our Clients Say</h3>
             <h2 className="text-3xl md:text-4xl font-bold text-white">Client Testimonials</h2>
           </div>
           
-          <div className="grid md:grid-cols-5 gap-8 items-center">
+          <div className={`grid md:grid-cols-5 gap-8 items-center transition-all duration-1000 delay-1200 transform ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+          }`}>
             {/* Main Testimonial */}
             <div className="md:col-span-4">
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 min-h-[280px] relative overflow-hidden">

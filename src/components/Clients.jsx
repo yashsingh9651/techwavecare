@@ -1,12 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { InfiniteMovingCards } from "./ui/infinite-moving-cards";
 
 export function Clients() {
+  const [isVisible, setIsVisible] = useState(false);
+  const clientsRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (clientsRef.current) {
+      observer.observe(clientsRef.current);
+    }
+
+    return () => {
+      if (clientsRef.current) {
+        observer.unobserve(clientsRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div
-      className="rounded-md antialiased relative overflow-hidden">
+      ref={clientsRef}
+      className={`rounded-md antialiased relative overflow-hidden transition-all duration-1000 transform ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+      }`}>
       <InfiniteMovingCards items={images} direction="right" speed="slow" />
     </div>
   );
