@@ -123,18 +123,18 @@ const Technician = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(
-        (prevIndex) => (prevIndex + 1) % Math.ceil(technicians.length / 3)
+        (prevIndex) => (prevIndex + 1) % Math.ceil(technicians.length / 4)
       );
     }, 4000); // Change every 4 seconds
 
     return () => clearInterval(interval);
   }, [technicians.length]);
 
-  // Get visible technicians (3 at a time)
+  // Get visible technicians (4 at a time)
   const getVisibleTechnicians = () => {
-    const start = currentIndex * 3;
+    const start = currentIndex * 4;
     const visible = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
       const techIndex = (start + i) % technicians.length;
       visible.push(technicians[techIndex]);
     }
@@ -146,7 +146,7 @@ const Technician = () => {
   return (
     <section
       ref={technicianRef}
-      className="relative w-full py-16 md:py-20 bg-blue-600 overflow-hidden"
+      className="relative w-full py-12 md:py-16 bg-blue-600 overflow-hidden"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 opacity-10">
@@ -157,7 +157,7 @@ const Technician = () => {
 
       <div className="relative z-10 container mx-auto px-4 md:px-10">
         {/* Header Section */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center mb-6 md:mb-8">
           <h3
             className={`text-sm md:text-lg text-white mb-3 md:mb-4 font-medium transition-all duration-1000 transform ${
               isVisible
@@ -194,16 +194,16 @@ const Technician = () => {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
-          <div className="flex flex-col md:flex-row md:overflow-hidden transition-transform duration-1000 ease-in-out">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 transition-all duration-1000 ease-in-out">
             {visibleTechnicians.map((tech, index) => (
               <div
                 key={`${tech.id}-${currentIndex}`}
-                className="w-full md:w-1/3 flex-shrink-0 px-2 md:px-4 mb-6 md:mb-0"
+                className="w-full"
               >
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl md:rounded-3xl p-4 md:p-6 h-full hover:bg-white/15 transition-all duration-500 transform hover:-translate-y-2 group">
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 h-full hover:bg-white/15 transition-all duration-500 transform hover:-translate-y-2 group">
                   {/* Profile Image */}
-                  <div className="relative mb-4 md:mb-6">
-                    <div className="w-16 h-16 md:w-24 md:h-24 mx-auto bg-neutral-950 rounded-full flex items-center justify-center text-white text-lg md:text-2xl font-bold shadow-lg">
+                  <div className="relative mb-3">
+                    <div className="w-12 h-12 mx-auto bg-neutral-950 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
                       {tech.name
                         .split(" ")
                         .map((n) => n[0])
@@ -212,19 +212,16 @@ const Technician = () => {
                   </div>
 
                   {/* Technician Info */}
-                  <div className="text-center mb-4 md:mb-6">
-                    <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-neutral-950 transition-colors duration-300">
+                  <div className="text-center mb-3">
+                    <h3 className="text-sm font-bold text-white mb-1 group-hover:text-neutral-950 transition-colors duration-300">
                       {tech.name}
                     </h3>
-                    <p className="text-white font-semibold mb-2 text-sm md:text-base">
+                    <p className="text-white font-medium mb-1 text-xs">
                       {tech.role}
                     </p>
-                    <p className="text-gray-300 text-xs md:text-sm mb-3">
-                      {tech.expertise}
-                    </p>
-                    <div className="inline-flex items-center bg-blue-500/20 px-2 md:px-3 py-1 rounded-full">
+                    <div className="inline-flex items-center bg-blue-500/20 px-2 py-1 rounded-full">
                       <svg
-                        className="w-3 h-3 md:w-4 md:h-4 text-blue-400 mr-1 md:mr-2"
+                        className="w-3 h-3 text-blue-400 mr-1"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -236,27 +233,19 @@ const Technician = () => {
                           d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      <span className="text-blue-300 text-xs md:text-sm font-medium">
+                      <span className="text-blue-300 text-xs font-medium">
                         {tech.experience}
                       </span>
                     </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 text-center">
-                    {tech.description}
-                  </p>
-
-                  {/* Skills */}
-                  <div className="mb-4 md:mb-6">
-                    <h4 className="text-white font-semibold mb-2 md:mb-3 text-xs md:text-sm">
-                      Core Skills:
-                    </h4>
-                    <div className="flex flex-wrap gap-1 md:gap-2">
-                      {tech.skills.slice(0, 3).map((skill, skillIndex) => (
+                  {/* Skills (Top 2 only) */}
+                  <div className="text-center">
+                    <div className="flex flex-wrap justify-center gap-1">
+                      {tech.skills.slice(0, 2).map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
-                          className="bg-white/10 px-2 md:px-3 py-1 rounded-full text-xs text-gray-300 border border-white/10"
+                          className="bg-white/10 px-2 py-1 rounded-full text-xs text-gray-300 border border-white/10"
                         >
                           {skill}
                         </span>
@@ -264,25 +253,8 @@ const Technician = () => {
                     </div>
                   </div>
 
-                  {/* Certifications */}
-                  <div className="border-t border-white/10 pt-3 md:pt-4">
-                    <h4 className="text-white font-semibold mb-2 text-xs md:text-sm">
-                      Certifications:
-                    </h4>
-                    <div className="flex flex-wrap gap-1">
-                      {tech.certifications.map((cert, certIndex) => (
-                        <span
-                          key={certIndex}
-                          className="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-xs font-medium"
-                        >
-                          {cert}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
                   {/* Hover Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
               </div>
             ))}
@@ -295,7 +267,7 @@ const Technician = () => {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
-          {Array.from({ length: Math.ceil(technicians.length / 3) }).map(
+          {Array.from({ length: Math.ceil(technicians.length / 4) }).map(
             (_, index) => (
               <button
                 key={index}

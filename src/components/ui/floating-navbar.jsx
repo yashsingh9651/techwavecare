@@ -9,26 +9,126 @@ import {
 import { cn } from "@/lib/utils";
 
 const servicesList = [
-  { id: 1, name: "Wi-Fi Connectivity Issues", href: "/services/wifi-connectivity" },
-  { id: 2, name: "Weak Signal Coverage", href: "/services/signal-coverage" },
-  { id: 3, name: "Printer Problems", href: "/services/printer-problems" },
-  { id: 4, name: "Smart TV Setup & Streaming", href: "/services/smart-tv-setup" },
-  { id: 5, name: "Cable TV Box Errors", href: "/services/cable-tv-errors" },
-  { id: 6, name: "Laptop/PC Running Slow", href: "/services/pc-performance" },
-  { id: 7, name: "Mobile Phone Setup", href: "/services/mobile-setup" },
-  { id: 8, name: "Password Recovery", href: "/services/password-recovery" },
-  { id: 9, name: "Device Compatibility", href: "/services/device-compatibility" },
-  { id: 10, name: "Smart Home Devices", href: "/services/smart-home" },
-  { id: 11, name: "Video Call Issues", href: "/services/video-calls" },
-  { id: 12, name: "Email Sync Problems", href: "/services/email-sync" },
-  { id: 13, name: "Cloud Storage Access", href: "/services/cloud-storage" },
-  { id: 14, name: "Software Installation", href: "/services/software-installation" },
-  { id: 15, name: "Office Printer Issues", href: "/services/office-printers" },
-  { id: 16, name: "VPN Connection Drops", href: "/services/vpn-issues" },
-  { id: 17, name: "Internet Outages", href: "/services/internet-outages" },
-  { id: 18, name: "Electronics Surge Damage", href: "/services/surge-damage" },
-  { id: 19, name: "Security System Issues", href: "/services/security-systems" },
-  { id: 20, name: "Smart Appliance Malfunctions", href: "/services/smart-appliances" }
+  { 
+    id: 1, 
+    name: "Wi-Fi Connectivity Issues", 
+    href: "/services/wifi-connectivity",
+    icon: "📶"
+  },
+  { 
+    id: 2, 
+    name: "Weak Signal Coverage", 
+    href: "/services/signal-coverage",
+    icon: "📡"
+  },
+  { 
+    id: 3, 
+    name: "Printer Problems", 
+    href: "/services/printer-problems",
+    icon: "🖨️"
+  },
+  { 
+    id: 4, 
+    name: "Smart TV Setup & Streaming", 
+    href: "/services/smart-tv-setup",
+    icon: "📺"
+  },
+  { 
+    id: 5, 
+    name: "Cable TV Box Errors", 
+    href: "/services/cable-tv-errors",
+    icon: "📦"
+  },
+  { 
+    id: 6, 
+    name: "Laptop/PC Running Slow", 
+    href: "/services/pc-performance",
+    icon: "💻"
+  },
+  { 
+    id: 7, 
+    name: "Mobile Phone Setup", 
+    href: "/services/mobile-setup",
+    icon: "📱"
+  },
+  { 
+    id: 8, 
+    name: "Password Recovery", 
+    href: "/services/password-recovery",
+    icon: "🔐"
+  },
+  { 
+    id: 9, 
+    name: "Device Compatibility", 
+    href: "/services/device-compatibility",
+    icon: "🔗"
+  },
+  { 
+    id: 10, 
+    name: "Smart Home Devices", 
+    href: "/services/smart-home",
+    icon: "🏠"
+  },
+  { 
+    id: 11, 
+    name: "Video Call Issues", 
+    href: "/services/video-calls",
+    icon: "📹"
+  },
+  { 
+    id: 12, 
+    name: "Email Sync Problems", 
+    href: "/services/email-sync",
+    icon: "✉️"
+  },
+  { 
+    id: 13, 
+    name: "Cloud Storage Access", 
+    href: "/services/cloud-storage",
+    icon: "☁️"
+  },
+  { 
+    id: 14, 
+    name: "Software Installation", 
+    href: "/services/software-installation",
+    icon: "💿"
+  },
+  { 
+    id: 15, 
+    name: "Office Printer Issues", 
+    href: "/services/office-printers",
+    icon: "🏢"
+  },
+  { 
+    id: 16, 
+    name: "VPN Connection Drops", 
+    href: "/services/vpn-issues",
+    icon: "🛡️"
+  },
+  { 
+    id: 17, 
+    name: "Internet Outages", 
+    href: "/services/internet-outages",
+    icon: "🌐"
+  },
+  { 
+    id: 18, 
+    name: "Electronics Surge Damage", 
+    href: "/services/surge-damage",
+    icon: "⚡"
+  },
+  { 
+    id: 19, 
+    name: "Security System Issues", 
+    href: "/services/security-systems",
+    icon: "🔒"
+  },
+  { 
+    id: 20, 
+    name: "Smart Appliance Malfunctions", 
+    href: "/services/smart-appliances",
+    icon: "🔧"
+  }
 ];
 
 export const FloatingNav = ({
@@ -45,7 +145,6 @@ export const FloatingNav = ({
     // Check if current is not undefined and is a number
     if (typeof current === "number") {
       let direction = current - scrollYProgress.getPrevious();
-
       if (scrollYProgress.get() < 0.05) {
         setVisible(true);
       } else {
@@ -113,20 +212,33 @@ export const FloatingNav = ({
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-80 bg-blue-600 backdrop-blur-md border border-blue-500 rounded-2xl shadow-2xl z-50 max-h-96 overflow-y-auto"
+                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[800px] bg-blue-600 backdrop-blur-md border border-blue-500 rounded-2xl shadow-2xl z-50"
                       >
-                        <div className="p-4">
-                          <h3 className="text-white font-semibold text-sm mb-3 px-2">Our Services</h3>
-                          <div className="space-y-1">
+                        <div className="p-6">
+                          <h3 className="text-white font-semibold text-sm mb-4 px-2">Our Services</h3>
+                          <div className="grid grid-cols-4 gap-2">
                             {servicesList.map((service) => (
                               <a
                                 key={service.id}
                                 href={service.href}
-                                className="block px-3 py-2 text-sm text-white hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200"
+                                className="flex items-center space-x-2 px-2 py-2 text-white hover:bg-blue-500 rounded-lg transition-colors duration-200 whitespace-nowrap"
+                                title={service.name}
                               >
-                                {service.name}
+                                <span className="text-sm flex-shrink-0">{service.icon}</span>
+                                <span className="text-xs truncate">{service.name}</span>
                               </a>
                             ))}
+                          </div>
+                          <div className="mt-4 pt-3 border-t border-blue-500/30">
+                            <a
+                              href="/services"
+                              className="flex items-center justify-center space-x-2 px-3 py-2 text-sm text-blue-200 hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200 font-semibold"
+                            >
+                              <span>View All Services</span>
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </a>
                           </div>
                         </div>
                       </motion.div>
@@ -195,18 +307,22 @@ export const FloatingNav = ({
                               <a
                                 key={service.id}
                                 href={service.href}
-                                className="block px-3 py-2 text-sm text-blue-200 hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200"
+                                className="flex items-center space-x-2 px-3 py-2 text-sm text-blue-200 hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200"
                                 onClick={() => setIsMobileMenuOpen(false)}
                               >
-                                {service.name}
+                                <span className="text-base">{service.icon}</span>
+                                <span>{service.name}</span>
                               </a>
                             ))}
                             <a
                               href="/services"
-                              className="block px-3 py-2 text-sm text-blue-300 hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200 font-semibold"
+                              className="flex items-center space-x-2 px-3 py-2 text-sm text-blue-300 hover:bg-blue-500 hover:text-white rounded-lg transition-colors duration-200 font-semibold"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
-                              View All Services →
+                              <span>View All Services</span>
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
                             </a>
                           </div>
                         )}
