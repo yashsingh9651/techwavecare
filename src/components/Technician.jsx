@@ -146,20 +146,20 @@ const Technician = () => {
   return (
     <section
       ref={technicianRef}
-      className="relative w-full py-16 md:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden"
+      className="relative w-full py-16 md:py-20 bg-blue-600 overflow-hidden"
     >
       {/* Background Decorations */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-400 rounded-full blur-3xl" />
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }} />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 md:px-10">
         {/* Header Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <h3
-            className={`text-lg text-blue-400 mb-4 font-medium transition-all duration-1000 transform ${
+            className={`text-sm md:text-lg text-white mb-3 md:mb-4 font-medium transition-all duration-1000 transform ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
@@ -168,16 +168,16 @@ const Technician = () => {
             Meet Our Expert Team
           </h3>
           <h2
-            className={`text-3xl md:text-4xl font-bold text-white mb-6 transition-all duration-1000 delay-200 transform ${
+            className={`text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 md:mb-6 transition-all duration-1000 delay-200 transform ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
             }`}
           >
-            Certified <span className="text-blue-400">IT Professionals</span>
+            Certified <span className="text-white">IT Professionals</span>
           </h2>
           <p
-            className={`text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-400 transform ${
+            className={`text-sm md:text-lg text-white max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-400 transform ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-8 opacity-0"
@@ -194,16 +194,16 @@ const Technician = () => {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
-          <div className="flex transition-transform duration-1000 ease-in-out">
+          <div className="flex flex-col md:flex-row md:overflow-hidden transition-transform duration-1000 ease-in-out">
             {visibleTechnicians.map((tech, index) => (
               <div
                 key={`${tech.id}-${currentIndex}`}
-                className="w-full md:w-1/3 flex-shrink-0 px-4"
+                className="w-full md:w-1/3 flex-shrink-0 px-2 md:px-4 mb-6 md:mb-0"
               >
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 h-full hover:bg-white/15 transition-all duration-500 transform hover:-translate-y-2 group">
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl md:rounded-3xl p-4 md:p-6 h-full hover:bg-white/15 transition-all duration-500 transform hover:-translate-y-2 group">
                   {/* Profile Image */}
-                  <div className="relative mb-6">
-                    <div className="w-24 h-24 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                  <div className="relative mb-4 md:mb-6">
+                    <div className="w-16 h-16 md:w-24 md:h-24 mx-auto bg-neutral-950 rounded-full flex items-center justify-center text-white text-lg md:text-2xl font-bold shadow-lg">
                       {tech.name
                         .split(" ")
                         .map((n) => n[0])
@@ -212,19 +212,19 @@ const Technician = () => {
                   </div>
 
                   {/* Technician Info */}
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                  <div className="text-center mb-4 md:mb-6">
+                    <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-neutral-950 transition-colors duration-300">
                       {tech.name}
                     </h3>
-                    <p className="text-blue-400 font-semibold mb-2">
+                    <p className="text-white font-semibold mb-2 text-sm md:text-base">
                       {tech.role}
                     </p>
-                    <p className="text-gray-300 text-sm mb-3">
+                    <p className="text-gray-300 text-xs md:text-sm mb-3">
                       {tech.expertise}
                     </p>
-                    <div className="inline-flex items-center bg-blue-500/20 px-3 py-1 rounded-full">
+                    <div className="inline-flex items-center bg-blue-500/20 px-2 md:px-3 py-1 rounded-full">
                       <svg
-                        className="w-4 h-4 text-blue-400 mr-2"
+                        className="w-3 h-3 md:w-4 md:h-4 text-blue-400 mr-1 md:mr-2"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -236,27 +236,27 @@ const Technician = () => {
                           d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      <span className="text-blue-300 text-sm font-medium">
+                      <span className="text-blue-300 text-xs md:text-sm font-medium">
                         {tech.experience}
                       </span>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-sm leading-relaxed mb-6 text-center">
+                  <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-4 md:mb-6 text-center">
                     {tech.description}
                   </p>
 
                   {/* Skills */}
-                  <div className="mb-6">
-                    <h4 className="text-white font-semibold mb-3 text-sm">
+                  <div className="mb-4 md:mb-6">
+                    <h4 className="text-white font-semibold mb-2 md:mb-3 text-xs md:text-sm">
                       Core Skills:
                     </h4>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1 md:gap-2">
                       {tech.skills.slice(0, 3).map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
-                          className="bg-white/10 px-3 py-1 rounded-full text-xs text-gray-300 border border-white/10"
+                          className="bg-white/10 px-2 md:px-3 py-1 rounded-full text-xs text-gray-300 border border-white/10"
                         >
                           {skill}
                         </span>
@@ -265,8 +265,8 @@ const Technician = () => {
                   </div>
 
                   {/* Certifications */}
-                  <div className="border-t border-white/10 pt-4">
-                    <h4 className="text-white font-semibold mb-2 text-sm">
+                  <div className="border-t border-white/10 pt-3 md:pt-4">
+                    <h4 className="text-white font-semibold mb-2 text-xs md:text-sm">
                       Certifications:
                     </h4>
                     <div className="flex flex-wrap gap-1">
@@ -282,7 +282,7 @@ const Technician = () => {
                   </div>
 
                   {/* Hover Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 </div>
               </div>
             ))}
@@ -291,7 +291,7 @@ const Technician = () => {
 
         {/* Navigation Dots */}
         <div
-          className={`flex justify-center mt-8 space-x-2 transition-all duration-1000 delay-800 transform ${
+          className={`flex justify-center mt-6 md:mt-8 space-x-2 transition-all duration-1000 delay-800 transform ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
@@ -300,7 +300,7 @@ const Technician = () => {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
                     ? "bg-blue-400 scale-125"
                     : "bg-white/30 hover:bg-white/50"
@@ -312,23 +312,23 @@ const Technician = () => {
 
         {/* Bottom CTA */}
         <div
-          className={`text-center mt-12 transition-all duration-1000 delay-1000 transform ${
+          className={`text-center mt-8 md:mt-12 transition-all duration-1000 delay-1000 transform ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}
         >
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold text-white mb-4">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
               Need Expert IT Support?
             </h3>
-            <p className="text-gray-300 text-base mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-300 text-sm md:text-base mb-4 md:mb-6 max-w-2xl mx-auto">
               Our certified technicians are ready to help you solve complex IT
               challenges and optimize your technology infrastructure.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+              <button className="bg-blue-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg text-sm md:text-base">
                 Schedule Consultation
               </button>
-              <button className="border-2 border-blue-400 text-blue-400 px-6 py-3 rounded-full font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300">
+              <button className="border-2 border-blue-400 text-blue-400 px-4 md:px-6 py-2 md:py-3 rounded-full font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300 text-sm md:text-base">
                 View All Services
               </button>
             </div>

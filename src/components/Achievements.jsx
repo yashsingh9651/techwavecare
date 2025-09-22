@@ -119,7 +119,7 @@ const Achievements = () => {
   return (
     <section 
       ref={bannerRef}
-      className="relative w-full overflow-hidden bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 py-16 md:py-20"
+      className="relative w-full overflow-hidden bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 py-12 md:py-16 lg:py-20"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -128,39 +128,43 @@ const Achievements = () => {
         }} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-10">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 lg:px-10">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h3 className="text-lg text-blue-300 mb-2 font-medium">Our Achievements</h3>
-          <h2 className="text-3xl md:text-4xl font-bold text-white">
+        <div className="text-center mb-8 md:mb-12">
+          <h3 className="text-sm md:text-lg text-blue-300 mb-2 font-medium">Our Achievements</h3>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">
             Trusted by Businesses <span className="text-blue-300">Worldwide</span>
           </h2>
-          <p className="text-blue-100 mt-4 max-w-2xl mx-auto">
+          <p className="text-blue-100 mt-3 md:mt-4 max-w-2xl mx-auto text-sm md:text-base">
             Numbers that reflect our commitment to excellence and customer satisfaction
           </p>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300 transform hover:scale-105"
+              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl md:rounded-2xl p-4 md:p-6 text-center hover:bg-white/15 transition-all duration-300 transform hover:scale-105"
             >
-              <div className="flex justify-center mb-4">
-                {stat.icon}
+              <div className="flex justify-center mb-3 md:mb-4">
+                <div className="w-6 h-6 md:w-8 md:h-8">
+                  {React.cloneElement(stat.icon, { 
+                    className: stat.icon.props.className.replace('w-8 h-8', 'w-6 h-6 md:w-8 md:h-8')
+                  })}
+                </div>
               </div>
               
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2">
                 {stat.count.toLocaleString()}{stat.suffix}
               </div>
               
-              <div className="text-blue-200 text-sm font-medium">
+              <div className="text-blue-200 text-xs md:text-sm font-medium">
                 {stat.label}
               </div>
 
               {/* Animated progress bar */}
-              <div className="mt-4 bg-white/20 rounded-full h-1 overflow-hidden">
+              <div className="mt-3 md:mt-4 bg-white/20 rounded-full h-1 overflow-hidden">
                 <div 
                   className="h-full bg-gradient-to-r from-blue-400 to-blue-300 rounded-full transition-all duration-2000 ease-out"
                   style={{ 
@@ -174,11 +178,11 @@ const Achievements = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-12">
-          <p className="text-blue-100 mb-6">
+        <div className="text-center mt-8 md:mt-12">
+          <p className="text-blue-100 mb-4 md:mb-6 text-sm md:text-base">
             Ready to join our growing family of satisfied clients?
           </p>
-          <Link href="/contact" className="bg-white text-blue-900 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-lg">
+          <Link href="/contact" className="bg-white text-blue-900 px-6 md:px-8 py-2 md:py-3 rounded-full font-semibold hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-lg text-sm md:text-base">
             Get Started Today
           </Link>
         </div>
