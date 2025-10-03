@@ -9,63 +9,13 @@ applyTo: '**'
 
 ---
 
-#### 1. Navbar
-- Create a **navbar** with the following links:
-  - Home  
-  - About  
-  - Services (dropdown containing all services below)  
-  - Contact  
-
-#### 2. Services Section
-- Add a **Services section** on the homepage (or a dedicated `/services` page).  
-- Each service should be displayed in a **card format** (icon + title + description).  
-- Use a responsive **grid layout** for the services.  
-
-#### 3. Services List
-Add the following services:
-
-1. Wi-Fi connectivity issues (slow speed, dropped connections, router not working).  
-2. Weak signal coverage in certain rooms (need for Wi-Fi extenders/mesh systems).  
-3. Printer problems (paper jams, cartridges not detected, Wi-Fi printer not connecting).  
-4. Smart TV setup & streaming issues (apps not working, buffering on Netflix/Prime).  
-5. Cable TV box errors (signal lost, frozen channels).  
-6. Laptop/PC running slow (storage full, malware, outdated software).  
-7. Mobile phone setup problems (email sync, updates not installing, overheating).  
-8. Forgotten passwords or account lockouts (Google, Apple ID, Windows login).  
-9. Device compatibility issues (new phones not pairing with older smart devices).  
-10. Smart home device issues (Alexa, Google Nest, thermostat not connecting to Wi-Fi).  
-11. Video call issues (Zoom/Teams freezing, poor audio/video quality).  
-12. Email not syncing properly (Outlook, Gmail issues with multiple devices).  
-13. Cloud storage access issues (Google Drive, OneDrive, iCloud).  
-14. Software installation & update errors (endpoints solutions, office tools, games).  
-15. Printer not working in offices (driver issues, network printers not responding).  
-16. VPN connection drops (common for remote workers).  
-17. Internet outages in neighborhoods (common with Rogers, Bell, Shaw, Telus).  
-18. Electricity surges damaging electronics (common in storm-prone areas).  
-19. Home security systems false alarms or app connectivity issues.  
-20. Smart appliance malfunctions (smart fridge, washing machines not syncing with apps).  
-
----
-
-#### 4. Service Details Page (Optional)
-- Each service card should link to a **dedicated service page** (`/services/[id]`).  
-- Service detail page should include:
-  - Title  
-  - Full description  
-  - Possible solutions  
-  - Contact/Booking button  
-
----
-
-#### 5. Styling & UI
+#### 1. Styling & UI
 - Use **Tailwind CSS** for styling.  
 - **blue-600**: Navbar background, section backgrounds (where emphasis is needed), important button backgrounds, tagline or headings.  
 - **white**: Text color, button text, and some buttons with transparent backgrounds + white borders.  
 - **neutral-950**: Default background for most sections.  
 - **Cards**: Apply a **blur backdrop effect** with subtle shadows. 
 - Make sure it’s **mobile-friendly** with a clean and modern look and main focus is our mobile devices.  
-
-
 
 ---
 
@@ -78,6 +28,9 @@ Add the following services:
 - Perfect Meta Tags: Use `next/head` with unique titles + descriptions.  
 - Structured Data: Add JSON-LD schema (Articles, Products, FAQs) inside `next/head`.  
 - Clean URLs + Sitemaps: Next.js routing ensures clean URLs. Add dynamic `sitemap.xml`.  
+- speed up JavaScript execution: Use code-splitting and lazy loading for non-critical JS.
+- Only send the code that your users need by implementing code splitting.
+- Reduce network trips by caching your code with the PRPL pattern.
 
 ### 2. Create High-Converting, Honest Landing Pages
 - Message Match: Ad promise = Landing page content.  
